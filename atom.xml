@@ -41,7 +41,7 @@
     <link href="http://example.com/2024/12/05/day/"/>
     <id>http://example.com/2024/12/05/day/</id>
     <published>2024-12-05T13:23:10.000Z</published>
-    <updated>2024-12-07T10:53:36.123Z</updated>
+    <updated>2024-12-08T05:20:57.079Z</updated>
     
     <content type="html"><![CDATA[<p>愿我来生，永沉黑暗，不入星辰；愿他来世，明月清风，不染俗尘。</p>]]></content>
     
@@ -58,11 +58,11 @@
   </entry>
   
   <entry>
-    <title>Text</title>
+    <title>Hello</title>
     <link href="http://example.com/2024/11/28/text/"/>
     <id>http://example.com/2024/11/28/text/</id>
     <published>2024-11-28T12:10:45.000Z</published>
-    <updated>2024-12-05T13:34:32.324Z</updated>
+    <updated>2024-12-08T05:20:37.988Z</updated>
     
     <content type="html"><![CDATA[<p>大家好哦！<br>我是Hexo的作者，欢迎来的我的世界！<br>接下来让我们一起走进这个世界吧！</p>]]></content>
     
