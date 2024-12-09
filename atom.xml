@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-12-09T10:34:50.574Z</updated>
+  <updated>2024-12-09T14:09:05.430Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>解题过程</title>
+    <title>解题过程2</title>
+    <link href="http://example.com/2024/12/09/post2/"/>
+    <id>http://example.com/2024/12/09/post2/</id>
+    <published>2024-12-09T12:42:32.000Z</published>
+    <updated>2024-12-09T14:09:05.430Z</updated>
+    
+    <content type="html"><![CDATA[<p>继上一篇解题过程，让我们继续探索ctf的奥秘吧！<br><img src="/biaoqingbao1.png" alt="alt text"><br>一、这是一道mlsc题目：<br>打开是一个word文档，把它甩010里，看到文件头是504B0304，说明是zip压缩包，所以要在文件管理器里点击重命名，把.docx改为.zip,再打开压缩包，找到document.xml文件，打开后搜索flag，就在右上角，搜不出来的小伙伴们可以试试点击搜索选项，把里面的搜索系统文件的权限给打开哦！<br><img src="/image7.png" alt="alt text"><br>补充知识：<br>常用文件的文件头如下(16进制)：<br>JPEG (jpg)，文件头：FFD8FFE1<br>PNG (png)，文件头：89504E47<br>GIF (gif)，文件头：47494638<br>TIFF (tif)，文件头：49492A00<br>CAD (dwg)，文件头：41433130<br>Adobe Photoshop (psd)，文件头：38425053<br>Rich Text Format (rtf)，文件头：7B5C727466<br>MS Word&#x2F;Excel (xls.or.doc)，文件头：D0CF11E0<br>ZIP Archive (zip)，文件头：504B0304<br>RAR Archive (rar)，文件头：52617221<br>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>原文链接：<a href="https://blog.csdn.net/zjzqxzhj/article/details/113505200">https://blog.csdn.net/zjzqxzhj/article/details/113505200</a><br>二、这是一道mlsc题目：<br>得到了一个exe文件，点击后发现打不开<br><img src="/image8.png" alt="alt text"><br>所以我尝试全部解压缩，然后选择在记事本中打开，得到<br><img src="/image9.png" alt="alt text"><br>看开头，我发现是base64编码，所以我进入BASE64转图片的网站直接转码<br><a href="http://www.atoolbox.net/Tool.php?Id=1024">http://www.atoolbox.net/Tool.php?Id=1024</a><br>哇塞，这也太好用了吧！<br><img src="/biaoqingbao3.jpg" alt="alt text"><br>然后可以看出我得到了一个二维码，最后拿出我们的手机扫一扫，就得到了key。<br><img src="/image10.png" alt="alt text"><br>下面这是一个base64在线解码工具网站：<br><a href="https://the-x.cn/encodings/Base64.aspx">https://the-x.cn/encodings/Base64.aspx</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;继上一篇解题过程，让我们继续探索ctf的奥秘吧！&lt;br&gt;&lt;img src=&quot;/biaoqingbao1.png&quot; alt=&quot;alt text&quot;&gt;&lt;br&gt;一、这是一道mlsc题目：&lt;br&gt;打开是一个word文档，把它甩010里，看到文件头是504B0304，说明是zip压缩包</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>解题过程1</title>
     <link href="http://example.com/2024/12/07/post1/"/>
     <id>http://example.com/2024/12/07/post1/</id>
     <published>2024-12-07T10:39:58.000Z</published>
-    <updated>2024-12-09T10:34:50.574Z</updated>
+    <updated>2024-12-09T12:53:18.470Z</updated>
     
     <content type="html"><![CDATA[<p>–<br><a href="https://ctf.bugku.com/">https://ctf.bugku.com/</a><br>看了同学的blog才找到这一个特意做ctf的网站，内心觉得有点不道德，在这里先感谢一下他吧！<br>一、这是一道mlsc题目：<br>下载后得到如下一张图片：<br><img src="/image.png" alt="alt text"><br>解题思路:<br>先看图片属性没什么发现后，再使用十六进制工具 010 editor看看文件头、文件尾有什么特殊的东西没有。然后你会发现文件尾有一段特殊字符，这是一段unicode编码，上度娘找一个unicode在线编码的网站可以得到flag。<br><img src="/image-2.png" alt="alt text"><br>你可以在浏览器上搜索unicode网站，进行转换。<br><img src="/image-3.png" alt="alt text"><br>接下来让我们来认识一下什么是unicode编码吧。<br>它有三种表现形式&amp;#、&amp;#x、\u 。例如：<br>{ “a”:””}<br>可以表示为：</p><p>1.&#123;&#32;&#32;&#32;&#32;&#34;&#97;&#34;&#58;&#34;&#34;&#125;</p><p>2.&#x7b;&#x20;&#x20;&#x20;&#x20;&#x22;&#x61;&#x22;&#x3a;&#x22;&#x22;&#x7d;</p><p>3.\u007b\u0020\u0020\u0020\u0020\u0022\u0061\u0022\u003a\u0022\u0022\u007d<br>————————————————<br>原文链接：<a href="https://blog.csdn.net/zjzqxzhj/article/details/113466934">https://blog.csdn.net/zjzqxzhj/article/details/113466934</a><br>二、这也是一道mlsc题目：<br>关于核心价值观编码的<img src="/image-5.png" alt="alt text"><br>解题思路：<br>这个需要复制描述进入链接<a href="https://ctf.bugku.com/tool/cvecode">https://ctf.bugku.com/tool/cvecode</a> 进行解密，得到flag。说实话，我挺想知道为什么要进这个网站，是这一类题都要怎么做吗？我不理解，呜呜呜。<br>三、这是一道web题目：<br>启动场景得到以下图片：<br><img src="/cdb5de3d098f45bd845b65b0c8c48ad.png" alt="alt text"><br>解题思路：点击ctrl+u，查看网页源代码，然后就可以看到flag了。也有说点击f2也可以查看的，但是不知道我的为什么不可以。<br>四、这也是一道mlsc题目：<br>一张png图片，可以先用010编辑器打开文件，把只读的属性去掉，然后把下面的A4改为F4，前四个数指宽，后四个指高。<br><img src="/image1.png" alt="alt text"><br>不知道为什么要这样搞得，可以看看下面的补充知识(虽然我也不是很懂，但是我相信屏幕外的你可以看得懂)：<br><img src="/image2.png" alt="alt text"><br><img src="/image3.png" alt="alt text"><br><img src="/image4.png" alt="alt text"><br>以上三张图片均截至网络安全研究所，版权归原作者所有。详细解析看<a href="https://blog.csdn.net/zjzqxzhj/article/details/113451199">https://blog.csdn.net/zjzqxzhj/article/details/113451199</a><br>五、这也是一道mlsc题目：<br>pcap文件,点击后如下：<br><img src="/image5.png" alt="alt text"><br>就点击全部解压缩，再右击选择属性，把pcap的后缀改为txt,然后用记事本打开，点击ctrl+f搜索flag.<br><img src="/image6.png" alt="alt text"></p>]]></content>
     
